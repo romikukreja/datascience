@@ -64,4 +64,30 @@ Goal - Understand the exact changes in variables that lead to changes in another
 * 
 
 
+##Machine Learning Types
+### Supervised Learning  - We gave dataset with right answers given and have labelled data
+* Regression - Predict Continuous valued output - regression analysis is a statistical process for estimating the relationships among variables. It includes many techniques for modeling and analyzing several variables, when the focus is on the relationship between a dependent variable and one or more independent variables (or 'predictors')
+Example- Given a picture of a person, we have to predict their age on the basis of the given picture
+
+    * Linear Regression - Straight line
+    * Polynomial Regression - Curve
+
+
+* Classification - Predict Discrete valued output - Statistical classification, identifying to which of a set of categories a new observation belongs, on the basis of a training set of data
+Example - Given a patient with a tumor, we have to predict whether the tumor is malignant or benign.
+
+### Unsupervised Learning - Unlabelled data - Automatically cluster data
+* Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables.
+
+We can derive this structure by clustering the data based on relationships among the variables in the data.
+
+With unsupervised learning there is no feedback based on the prediction results.
+
+Example:
+
+* Clustering: Take a collection of 1,000,000 different genes, and find a way to automatically group these genes into groups that are somehow similar or related by different variables, such as lifespan, location, roles, and so on.
+
+* Non-clustering: The "Cocktail Party Algorithm", allows you to find structure in a chaotic environment. (i.e. identifying individual voices and music from a mesh of sounds at a cocktail party).
+
+
 
