@@ -1,0 +1,65 @@
+A) Software installations
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1) Install Anaconda 3 in C:\Anaconda3 folder
+2) Install Pycharm  
+3) Download and keep winutils under some folder - Eg: D:\Softwares\DataScience\winutils\bin
+4) Download Spark setup zip and unzip in some folder - Eg: D:\Softwares\DataScience\spark-2.0.0-bin-hadoop2.7
+5) Create spark-warehouse folder (if spark sql is required) under dir in #4 above
+6) Install PyCharm Community Edition
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+B) Env variable setup  - User variables for <Username>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JUPYTER_CONF - 
+PATH - C:\Anaconda3;C:\Anaconda3\Scripts;C:\Anaconda3\Library\bin;%SPARK_HOME%\bin;
+PYSPARK_DRIVER - jupyter
+PYSPARK_DRIVER_PYTHON_OPTS - "notebook --no-browser --port=8880 --master local[2]"
+PYSPARK_PYTHON - C:\Anaconda3\python.exe
+##PYTHON_PATH - C:\Anaconda3\python.exe
+##PYTHONHOME - C:\Anaconda3\python.exe
+##PYTHONPATH - C:\Anaconda3\python.exe
+RomiCode - D:\RomiCode
+SPARK_HOME - D:\Softwares\DataScience\spark-2.0.0-bin-hadoop2.7\
+SCALA_HOME - D:\Softwares\DataScience\scala-2.11.8
+HADOOP_HOME - D:\Softwares\DataScience\winutils
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+C) In D:\Softwares\DataScience\spark-2.0.0-bin-hadoop2.7\conf\log4j.properties
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Comment out 
+#log4j.rootCategory=INFO, console
+
+
+Uncomment following
+log4j.rootCategory=ERROR, console
+
+
+D) Add following code in - C:\Users\Romi\.jupyter\jupyter_notebook_config.py
+
+import os
+import sys
+
+c = get_config()
+c.NotebookApp.ip = '127.0.0.1'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 8888
+c.NotebookApp.notebook_dir='D:/RomiCode/DataScience'
+
+spark_home = os.environ.get('SPARK_HOME', None)
+if not spark_home:
+ raise ValueError('SPARK_HOME environment variable is not set')
+sys.path.insert(0, os.path.join(spark_home, 'python'))
+sys.path.insert(0, os.path.join(spark_home, 'python/lib/py4j-0.10.1-src.zip'))
+#execfile(os.path.join(spark_home, 'python/pyspark/shell.py'))
+
+from pyspark import SparkContext
+from pyspark import SparkConf
+sc = SparkContext("local", "test")
+
+
+
+E) Add following in PyCharm - Settings - Project: ProjectName - Project Interpreter - Click on <UpArrow> and then manage repositories
+conda-forge
+r
